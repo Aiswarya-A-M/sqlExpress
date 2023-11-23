@@ -1,0 +1,107 @@
+swagger:
+  "2.0"
+info:
+  title:
+    Express crud on mysql
+  version:
+    1.0.0
+servers:
+  -url: "http://localhost:3000/"
+  description:
+    it is my local server
+schemes:
+  [http,https]
+paths:
+  /:
+    get:
+      summary: Get all user details
+      description: Retrieve all user details from the server.
+      responses:
+        200:
+          description: Successful response
+  # /user:
+  #   post:
+  #     summary: add new user
+  #     description: add new user.
+  #     requestBody:
+  #       required:  true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             properties:
+  #               name:
+  #                 type: string
+  #               department:
+  #                 type: string
+  #               dob:
+  #                 type: string
+  #             required:
+  #               - name
+  #               - department
+  #               - dob
+  #     responses:
+  #       200:
+  #         description: Successful response
+      
+  /user:
+    post:
+      summary: Adds a new user
+      produces:
+        -application/json
+      consumes:
+        -application/json
+      parameters:
+      - in: body
+        name:
+          user
+        schema:     
+          type: object
+          properties:
+            name:
+              type: string
+            department:
+              type: string
+            dob:
+              type: string
+      responses:
+        200:
+          description: OK
+
+  /user/{id}:
+    put:
+      summary: update a new user
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          required: true
+          description: id of the user to update
+      - in: body
+        name:
+          user
+        schema:     
+          type: object
+          properties:
+            name:
+              type: string
+            department:
+              type: string
+            dob:
+              type: string
+      responses:
+        200:
+          description: OK
+    delete:
+      summary: delete a new user
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          required: true
+          description: id of the user to delete
+      responses:
+        200:
+          description: OK
