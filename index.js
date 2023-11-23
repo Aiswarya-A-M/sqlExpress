@@ -45,7 +45,7 @@ sequelize
  *    responses:
  *      200:
  *        description: Successful response
-*/
+ */
 
 app.get("/", async (req, res) => {
   const users = await User.findAll();
