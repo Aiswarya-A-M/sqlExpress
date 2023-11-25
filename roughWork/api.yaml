@@ -18,32 +18,7 @@ paths:
       description: Retrieve all user details from the server.
       responses:
         200:
-          description: Successful response
-  # /user:
-  #   post:
-  #     summary: add new user
-  #     description: add new user.
-  #     requestBody:
-  #       required:  true
-  #       content:
-  #         application/json:
-  #           schema:
-  #             type: object
-  #             properties:
-  #               name:
-  #                 type: string
-  #               department:
-  #                 type: string
-  #               dob:
-  #                 type: string
-  #             required:
-  #               - name
-  #               - department
-  #               - dob
-  #     responses:
-  #       200:
-  #         description: Successful response
-      
+          description: Successful response      
   /user:
     post:
       summary: Adds a new user

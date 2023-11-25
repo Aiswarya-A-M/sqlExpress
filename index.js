@@ -5,7 +5,6 @@ const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
 const app = express();
-
 app.use(express.json());
 
 const options = {
@@ -49,7 +48,7 @@ sequelize
 
 app.get("/", async (req, res) => {
   const users = await User.findAll();
-  res.json({ message: "Successfully retrieved user details", data: { users } });
+  res.json({message: "Successfully retrieved user details",data:{ users}});
 });
 
 /**
@@ -80,7 +79,7 @@ app.get("/", async (req, res) => {
  */
 
 app.post("/user", async (req, res) => {
-  const { name, department, dob } = req.body;
+  const {name, department, dob} = req.body;
   const newUser = await User.create({ name, department, dob });
   res.json(newUser);
 });

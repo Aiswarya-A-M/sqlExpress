@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes, UUIDV4 } = require("sequelize");
 const sequelize = require("../database");
 const uuid = require("uuid");
-const User = sequelize.define("User", {
+const User = sequelize.define("User",{
   name: {
     type: DataTypes.STRING,
     allowNull: false,
