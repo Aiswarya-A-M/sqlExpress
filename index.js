@@ -8,28 +8,28 @@ const app = express();
 app.use(express.json());
 const options = {
   definition: {
-    openapi: "3.1.0",
-    info: {
-      title: "express for crud operation on mysql",
-      version: "2.0",
+    openapi:"3.1.0",
+    info:{
+      title:"express for crud operation on mysql",
+      version:"2.0",
     },
-    servers: [
+    servers:[
       {
-        url: "http://localhost:3000/",
+        url:"http://localhost:3000/",
       },
     ],
   },
-  apis: ["./server.js"],
+  apis:["./server.js"],
 };
 const swaggerSpec = swaggerJsDoc(options);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerSpec));
 
 sequelize
-  .sync({ force: false })
-  .then(() => {
+  .sync({force:false })
+  .then(()=>{
     console.log("all models are synchronized successfully");
   })
-  .catch((error) => {
+  .catch((error)=>{
     console.log("error occurred", error);
   });
 
@@ -44,9 +44,9 @@ sequelize
  *        description: Successful response
  */
 
-app.get("/", async (req, res) => {
+app.get("/",async (req,res)=>{
   const users = await User.findAll();
-  res.json({ message: "Successfully retrieved user details", data: { users } });
+  res.json({message:"Successfully retrieved user details",data:{users}});
 });
 
 /**
@@ -76,9 +76,9 @@ app.get("/", async (req, res) => {
  *         description: Successful response
  */
 
-app.post("/user", async (req, res) => {
-  const { name, department, dob } = req.body;
-  const newUser = await User.create({ name, department, dob });
+app.post("/user",async (req,res)=>{
+  const {name,department,dob}=req.body;
+  const newUser=await User.create({name,department,dob});
   res.json(newUser);
 });
 
@@ -118,10 +118,10 @@ app.post("/user", async (req, res) => {
  *           description: Successful response
  */
 
-app.put("/user/:id", async (req, res) => {
-  const { name, department, dob } = req.body;
+app.put("/user/:id",async (req, res) => {
+  const {name,department,dob} = req.body;
   const user = await User.findByPk(req.params.id);
-  if (user) {
+  if(user){
     user.name = name;
     user.department = department;
     user.dob = dob;
@@ -150,15 +150,15 @@ app.put("/user/:id", async (req, res) => {
  *           description: Successful response
  */
 
-app.delete("/user/:id", async (req, res) => {
+app.delete("/user/:id",async (req, res) => {
   const user = await User.findByPk(req.params.id);
-  if (user) {
+  if(user) {
     user.destroy();
     return res.send("user deleted successfully");
   }
   res.send("user doesn't exist");
 });
 
-app.listen("3000", () => {
+app.listen("3000",()=>{
   console.log("server started on port 3000");
 });
