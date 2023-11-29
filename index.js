@@ -56,7 +56,7 @@ app.get("/", async (req, res) => {
  *     summary: add new user
  *     description: add new user.
  *     requestBody:
- *       required:  true
+ *       required: true
  *       content:
  *         application/json:
  *          schema:
